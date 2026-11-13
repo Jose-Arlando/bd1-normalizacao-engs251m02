@@ -5,7 +5,7 @@
 | Nome | Usuário do GitHub |
 | --- | --- |
 | José |  |
-| Luiz |  |
+| Luiz | https://github.com/Dellosofelipe |
 | Ana |  |
 | Méier |  |
 | diego |  |
