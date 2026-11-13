@@ -7,7 +7,7 @@
 | Luiz | https://github.com/Dellosofelipe |
 | Ana |  |
 | Méier | https://github.com/marcosantoniomeier-lab |
-| diego |  |
+| diego | https://github.com/diego134-cmyk |
 
 ## O cenário
 
