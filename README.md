@@ -10,10 +10,8 @@ Cada equipe recebe uma planilha mal montada de um sistema real e precisa transfo
 
 | Equipe | Cenário | Pasta |
 | --- | --- | --- |
-| 1 | Academia FitMais | [equipe-1-academia](equipe-1-academia/) |
 | 2 | Oficina AutoCerto | [equipe-2-oficina](equipe-2-oficina/) |
-| 3 | Biblioteca Saber | [equipe-3-biblioteca](equipe-3-biblioteca/) |
-| 4 | Semana de Tecnologia | [equipe-4-eventos](equipe-4-eventos/) |
+
 
 Cada pasta tem 3 planilhas, como tabelas do MySQL:
 
