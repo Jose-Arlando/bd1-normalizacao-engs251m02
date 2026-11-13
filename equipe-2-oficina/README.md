@@ -1,14 +1,14 @@
 # Equipe 2: Oficina AutoCerto
 
-**Nome do time:** ____________________
+**Nome do time:** oficina____________________
 
 | Nome | Usuário do GitHub |
 | --- | --- |
-|  |  |
-|  |  |
-|  |  |
-|  |  |
-|  |  |
+| José |  |
+| Luiz |  |
+| Ana |  |
+| Méier |  |
+| diego |  |
 
 ## O cenário
 
