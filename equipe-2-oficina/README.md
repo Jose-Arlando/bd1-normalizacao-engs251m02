@@ -4,7 +4,7 @@
 
 | Nome | Usuário do GitHub |
 | --- | --- |
-| José |  |
+| José | https://github.com/Jose-Arlando |
 | Luiz | https://github.com/Dellosofelipe |
 | Ana |  |
 | Méier | https://github.com/marcosantoniomeier-lab |
