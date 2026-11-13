@@ -1,7 +1,6 @@
 # Equipe 2: Oficina AutoCerto
 
-**Nome do time:** oficina____________________
-
+**Nome do time:** oficinaaaaaaa 
 | Nome | Usuário do GitHub |
 | --- | --- |
 | José | https://github.com/Jose-Arlando |
