@@ -7,7 +7,7 @@
 | José |  |
 | Luiz | https://github.com/Dellosofelipe |
 | Ana |  |
-| Méier |  |
+| Méier | https://github.com/marcosantoniomeier-lab |
 | diego |  |
 
 ## O cenário
