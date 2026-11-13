@@ -8,6 +8,7 @@
 | Ana | https://github.com/anavitoria0401 |
 | Méier | https://github.com/marcosantoniomeier-lab |
 | diego | https://github.com/diego134-cmyk |
+|reynaldo|https://github.com/ReyBoava|
 
 ## O cenário
 
