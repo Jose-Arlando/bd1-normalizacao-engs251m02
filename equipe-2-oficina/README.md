@@ -28,7 +28,7 @@ O sistema da Oficina AutoCerto hoje é uma planilha. Rode o `00_planilha.sql` no
 
 | Anomalia | Exemplo na planilha |
 | --- | --- |
-| Inserção |  |
+| Inserção | Não é possível cadastrar um novo serviço (ex.: S5, Balanceamento, 70.00) nem um novo cliente/veículo sem já ter uma ordem de serviço (num_os) associada; além disso, ao lançar uma nova linha para o cliente Marcos Reis (111.111.111-11), é preciso repetir seu nome (Marcos Reis) e seus telefones ((92) 98470-2110; (92) 98910-3230), como ocorre nas OSs 5001 e 5005. |
 | Exclusão |  |
 | Modificação |  |
 
