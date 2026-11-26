@@ -46,13 +46,117 @@ O sistema da Oficina AutoCerto hoje é uma planilha. Rode o `00_planilha.sql` no
 
 ## 3. Normalização passo a passo
 
-**1FN:** A tabela original não atendia completamente à Primeira Forma Normal, pois o atributo `telefones` armazenava mais de um número de telefone no mesmo campo, separados por ponto e vírgula. Para corrigir esse problema, os telefones foram separados, de modo que cada registro contenha apenas um número. Assim, os valores passaram a ser atômicos, atendendo à 1FN.
+1. Segunda Forma Normal (2FN)
+Na 1FN, os telefones precisam estar separados, pois telefones possui mais de um valor em algumas linhas. Depois, na 2FN, eliminamos dependências parciais da chave composta (num_os, cod_servico).
 
-**2FN:** [quais dependências parciais e como ficou]
+OS(
+  num_os PK,
+  data_os,
+  placa FK
+)
 
-**3FN:** [quais dependências transitivas e como ficou]
+VEICULO
+VEICULO(
+  placa PK,
+  modelo,
+  cpf_cliente FK
+)
 
-**Esquema final em 3FN:** [Tabela(atributos), com PK sublinhada ou em negrito e FK indicada]
+CLIENTE
+CLIENTE(
+  cpf_cliente PK,
+  nome_cliente
+)
+
+TELEFONE
+TELEFONE(
+  cpf_cliente FK,
+  telefone,
+  PK(cpf_cliente, telefone)
+)
+
+SERVICO
+SERVICO(
+  cod_servico PK,
+  servico,
+  preco_servico
+)
+
+OS_SERVICO
+OS_SERVICO(
+  num_os FK,
+  cod_servico FK,
+  horas,
+  PK(num_os, cod_servico)
+)
+
+2. Terceira Forma Normal (3FN)
+Na 3FN, retiramos dependências transitivas. Assim, os dados ficam organizados da seguinte forma:
+Tabela	Chave primária	Campos
+CLIENTE	cpf_cliente	cpf_cliente, nome_cliente
+TELEFONE	(cpf_cliente, telefone)	cpf_cliente, telefone
+VEICULO	placa	placa, modelo, cpf_cliente
+OS	num_os	num_os, data_os, placa
+SERVICO	cod_servico	cod_servico, servico, preco_servico
+OS_SERVICO	(num_os, cod_servico)	num_os, cod_servico, horas
+
+Tabelas finais na 3FN
+CLIENTE
+cpf_cliente	nome_cliente
+111.111.111-11	Marcos Reis
+222.222.222-22	Luana Prado
+333.333.333-33	Otávio Melo
+444.444.444-44	Sara Teles
+
+
+TELEFONE
+cpf_cliente	telefone
+111.111.111-11	(92) 98470-2110
+111.111.111-11	(92) 98910-3230
+222.222.222-22	(92) 98507-2221
+333.333.333-33	(92) 98544-2332
+444.444.444-44	(92) 98581-2443
+444.444.444-44	(92) 99033-3599
+
+
+VEICULO
+placa	modelo	cpf_cliente
+ABC1D23	Gol 1.0	111.111.111-11
+XYZ9K88	Onix LT	222.222.222-22
+QWE4R56	HB20	333.333.333-33
+JKL7M01	Corolla	444.444.444-44
+MNO2P34	Uno Way	111.111.111-11
+
+
+OS
+num_os	data_os	placa
+5001	01/10/2026	ABC1D23
+5002	02/10/2026	XYZ9K88
+5003	03/10/2026	QWE4R56
+5004	06/10/2026	JKL7M01
+5005	07/10/2026	MNO2P34
+
+
+SERVICO
+cod_servico	servico	preco_servico
+S1	Troca de óleo	120,00
+S2	Alinhamento	90,00
+S3	Troca de pastilhas	260,00
+S4	Revisão elétrica	180,00
+
+
+OS_SERVICO
+num_os	cod_servico	horas
+5001	S1	1,0
+5001	S2	1,5
+5002	S3	2,0
+5003	S1	1,0
+5003	S4	3,0
+5004	S2	1,5
+5004	S3	2,5
+5004	S4	2,0
+5005	S1	1,0
+Conclusão: a 3FN resulta em seis tabelas principais, evitando repetição de dados e garantindo que cada atributo dependa somente da chave da sua própria tabela.
 
 ## 4. FNBC: `planilha_fnbc`
 
