@@ -212,29 +212,62 @@ Com isso, organizamos os dados em seis tabelas principais, cada uma com sua chav
   - `mecanico_turno` (**mecanico**, **turno**) — PK composta: `(mecanico, turno)`
 ## 6. Modelagem
 
+
 ### 6.1 Modelo conceitual (Peter Chen)
 
-[Entidades, atributos (identificador sublinhado; multivalorado com elipse dupla), relacionamentos com nome e cardinalidade (mín, máx).]
-
-![Modelo conceitual](modelo_conceitual.png)
+<img width="2100" height="1450" alt="modelo_conceitual" src="https://github.com/user-attachments/assets/d433ad7a-bb8b-4b47-a23d-e4f0650406bf" />
 
 ### 6.2 Modelo lógico (James Martin, pé de galinha)
 
-[Todas as tabelas finais com seus atributos, PK e FK, e as linhas de relacionamento com a cardinalidade nas pontas.]
+CLIENTE(
 
-![Modelo lógico](modelo_logico.png)
+  cpf_cliente PK,
+  nome_cliente
+)
+
+TELEFONE(
+  cpf_cliente PK, FK → CLIENTE.cpf_cliente,
+  telefone PK
+)
+
+VEICULO(
+  placa PK,
+  modelo,
+  cpf_cliente FK → CLIENTE.cpf_cliente
+)
+
+OS(
+  num_os PK,
+  data_os,
+  placa FK → VEICULO.placa
+)
+
+SERVICO(
+  cod_servico PK,
+  servico,
+  preco_servico
+)
+
+OS_SERVICO(
+  num_os PK, FK → OS.num_os,
+  cod_servico PK, FK → SERVICO.cod_servico,
+  horas
+)
+
+<img width="2200" height="1540" alt="modelo_logico" src="https://github.com/user-attachments/assets/1fa77fee-0f8f-41b3-988a-eb93afc0bd79" />
 
 ## 7. Dicionário de dados
 
-Preencha o arquivo [`dicionario_dados.md`](dicionario_dados.md) com **todas** as tabelas finais.
+O dicionário de dados com todas as tabelas está em [dicionario_dados.md](dicionario_dados.md).
 
 ## 8. Prova de junção sem perda
 
-[Cole aqui o resultado do `03_prova_sem_perda.sql`: para cada planilha, linhas da original, linhas da reconstruída, faltando = 0 e sobrando = 0.]
+Prova de junção sem perda
 
-```
-(cole o resultado)
-```
+Planilha          Linhas originais   Linhas reconstruídas   Faltando   Sobrando
+planilha                  9                  9                 0          0
+planilha_fnbc             8                  8                 0          0
+planilha_4fn              8                  8                 0          0
 
 ## 9. Desafio: uma decomposição errada
 
