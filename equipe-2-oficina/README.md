@@ -200,9 +200,13 @@ Com isso, organizamos os dados em seis tabelas principais, cada uma com sua chav
 
 ## 4. FNBC: `planilha_fnbc`
 
-- Chaves candidatas: [ ]
-- Dependência que viola a FNBC: [ ]
-- Decomposição: [ ]
+## 4. FNBC: `planilha_fnbc`
+
+- **Chaves candidatas:** `(num_os, especialidade)` e `(num_os, mecanico)`.
+- **Dependência que viola a FNBC:** `mecanico → especialidade`, pois cada mecânico possui uma única especialidade, mas `mecanico` não é superchave da tabela.
+- **Decomposição sem perda:**
+  - `mecanico_especialidade` (**mecanico**, especialidade)
+  - `os_mecanico` (**num_os**, **mecanico**)
 
 ## 5. 4FN: `planilha_4fn`
 
