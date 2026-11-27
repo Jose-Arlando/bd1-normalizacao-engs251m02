@@ -46,9 +46,6 @@ O sistema da Oficina AutoCerto hoje é uma planilha. Rode o `00_planilha.sql` no
 
 ## 3. Normalização passo a passo
 
-
-## 3. Normalização passo a passo
-
 ### 1. Primeira Forma Normal (1FN)
 
 A tabela original não atendia completamente à Primeira Forma Normal, pois o atributo `telefones` armazenava mais de um número de telefone no mesmo campo, separados por ponto e vírgula.
