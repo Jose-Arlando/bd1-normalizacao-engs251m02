@@ -206,9 +206,10 @@ Com isso, organizamos os dados em seis tabelas principais, cada uma com sua chav
 
 ## 5. 4FN: `planilha_4fn`
 
-- Dependências multivaloradas: [ ]
-- Decomposição: [ ]
-
+- Dependências multivaloradas: `mecanico` <=> `curso` e `mecanico` <=> `turno` (cada mecânico possui vários cursos e trabalha em vários turnos de forma independente, gerando combinações redundantes na mesma tabela).
+- Decomposição:
+  - `mecanico_curso` (**mecanico**, **curso**) — PK composta: `(mecanico, curso)`
+  - `mecanico_turno` (**mecanico**, **turno**) — PK composta: `(mecanico, turno)`
 ## 6. Modelagem
 
 ### 6.1 Modelo conceitual (Peter Chen)
@@ -237,4 +238,20 @@ Preencha o arquivo [`dicionario_dados.md`](dicionario_dados.md) com **todas** as
 
 ## 9. Desafio: uma decomposição errada
 
-[Mostre uma decomposição da `planilha_fnbc` que **perde** informação: as duas tabelas, a consulta de junção e quantas linhas falsas (tuplas espúrias) ela gera.]
+- **Duas tabelas da decomposição errada de `planilha_fnbc`:**
+  - `os_especialidade` (**num_os**, **especialidade**)
+  - `especialidade_mecanico` (**especialidade**, **mecanico**)
+
+- **Consulta de junção (`JOIN`):**
+```sql
+SELECT
+  oe.num_os,
+  oe.especialidade,
+  em.mecanico
+FROM os_especialidade oe
+JOIN especialidade_mecanico em
+  ON oe.especialidade = em.especialidade;
+
+```
+
+- **Linhas falsas (tuplas espúrias):** gera **2 linhas falsas** (retorna 10 linhas no total contra as 8 linhas originais da `planilha_fnbc`). Como a especialidade `'Freios'` possui dois mecânicos distintos em ordens de serviço diferentes (`5002` com `'Igor'` e `5004` com `'Gabriel'`), a junção apenas por `especialidade` cria as duas combinações inexistentes: `(5002, 'Freios', 'Gabriel')` e `(5004, 'Freios', 'Igor')`.
